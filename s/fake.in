@@ -273,8 +273,9 @@ impl_has_errout() # {{{
 {
   {
     printf -- "%s\n" "#!/bin/sh"
-    printf -- "%s\n" "cat >&${1:?} <<\\EOF"
+    printf -- "%s\n" "cat >&${1:?} <<\\EOF | perl -pe 'chomp if eof'"
     cat
+    echo
     printf -- "%s\n" "EOF"
   } > "$name"
 } # }}}
